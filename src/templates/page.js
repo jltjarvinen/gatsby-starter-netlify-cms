@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 
-export const OtherPostTemplate = ({
+export const PageTemplate = ({
   content,
   contentComponent,
   title,
@@ -30,36 +30,36 @@ export const OtherPostTemplate = ({
   )
 }
 
-OtherPostTemplate.propTypes = {
+PageTemplate.propTypes = {
   content: PropTypes.string.isRequired,
   contentComponent: PropTypes.func,
   title: PropTypes.string,
   helmet: PropTypes.instanceOf(Helmet),
 }
 
-const OtherPost = ({ data }) => {
+const Page = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
-    <OtherPostTemplate
+    <PageTemplate
       content={post.html}
       contentComponent={HTMLContent}
-      helmet={<Helmet title={`${post.frontmatter.title} | Other`} />}
+      helmet={<Helmet title={`${post.frontmatter.title} | Page`} />}
       title={post.frontmatter.title}
     />
   )
 }
 
-OtherPost.propTypes = {
+Page.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 }
 
-export default OtherPost
+export default Page
 
 export const pageQuery = graphql`
-  query OtherPostByID($id: String!) {
+  query PageByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html

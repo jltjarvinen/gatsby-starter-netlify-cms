@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { OtherPostTemplate } from '../../templates/other'
+import { PageTemplate } from '../../templates/page'
 
-const OtherPostPreview = ({ entry, widgetFor }) => (
-  <OtherPostTemplate
+const PagePreview = ({ entry, widgetFor }) => (
+  <PageTemplate
     content={widgetFor('body')}
     name={entry.getIn(['data', 'name'])}
     title={entry.getIn(['data', 'title'])}
   />
 )
 
-OtherPostPreview.propTypes = {
+PagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   widgetFor: PropTypes.func,
 }
 
-export default OtherPostPreview
+export default PagePreview

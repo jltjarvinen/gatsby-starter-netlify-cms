@@ -16,7 +16,7 @@ const Navbar = (props) => (
       </div>
       <div className="navbar-start">
         {props.pages
-            .filter(page => page.node.frontmatter.templateKey === 'other')
+            .filter(page => page.node.frontmatter.templateKey === 'page')
             .map(({ node: page }) => (
               <Link key={page.id} className="navbar-item" to={page.fields.slug}>
                 {page.frontmatter.name}

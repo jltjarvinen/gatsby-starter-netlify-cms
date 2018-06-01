@@ -19,13 +19,13 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
 
-  - name: "other"
-    label: "Other"
-    folder: "src/pages/other"
+  - name: "page"
+    label: "Page"
+    folder: "src/pages/page"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "other"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "page"}
       - {label: "Name", name: "name", widget: string}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
