@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
-const Navbar = () => (
+const Navbar = (props) => (
   <nav className="navbar is-transparent">
     <div className="container">
       <div className="navbar-brand">
@@ -15,6 +15,14 @@ const Navbar = () => (
         </Link>
       </div>
       <div className="navbar-start">
+        {props.pages
+            .filter(page => page.node.frontmatter.templateKey === 'other')
+            .map(({ node: page }) => (
+              <Link key={page.id} className="navbar-item" to={page.fields.slug}>
+                {page.frontmatter.name}
+              </Link>
+            ))}
+
         <Link className="navbar-item" to="/about">
           About
         </Link>

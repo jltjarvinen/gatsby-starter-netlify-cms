@@ -5,10 +5,10 @@ import Helmet from 'react-helmet'
 import Navbar from '../components/Navbar'
 import './all.sass'
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, data }) => (
   <div>
     <Helmet title="Home | Gatsby + Netlify CMS" />
-    <Navbar />
+    <Navbar pages={data.allMarkdownRemark.edges} />
     <div>{children()}</div>
   </div>
 )
@@ -18,3 +18,23 @@ TemplateWrapper.propTypes = {
 }
 
 export default TemplateWrapper
+
+export const lolQuery = graphql`
+  query LolQuery {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            name
+            templateKey
+          }
+        }
+      }
+    }
+  }
+`
