@@ -7,7 +7,7 @@ import './all.sass'
 
 const TemplateWrapper = ({ children, data }) => (
   <div>
-    <Helmet title="Home | Gatsby + Netlify CMS" />
+    <Helmet title={data.site.siteMetadata.title} />
     <Navbar pages={data.allMarkdownRemark.edges} />
     <div>{children()}</div>
   </div>
@@ -21,6 +21,11 @@ export default TemplateWrapper
 
 export const lolQuery = graphql`
   query LolQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    },
     allMarkdownRemark {
       edges {
         node {
